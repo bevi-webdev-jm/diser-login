@@ -6,7 +6,8 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\{
     RoleController, UserController, CompanyController,
     SystemLogController, SystemSettingController, HomeController,
-    NotificationController, PositionController, OrgStructureController
+    NotificationController, PositionController, OrgStructureController,
+    DiserIdNumberController
 };
 
 /*
@@ -47,6 +48,18 @@ Route::group(['middleware' => ['auth', 'optimizeImages']], function() {
     Route::get('test-notification', [NotificationController::class, 'testNotification'])->name('test-notification');
     Route::get('notifications', [NotificationController::class, 'index'])->name('notifications');
 
+    // DISER ID NUMBER
+    Route::group(['middleware' => 'permission:diser id number access'], function() {
+        Route::get('diser-number', [DiserIdNumberController::class, 'index'])->name('diser-number.index');
+        Route::get('diser-number/create', [DiserIdNumberController::class, 'create'])->name('diser-number.create')->middleware('permission:diser id number create');
+        Route::post('diser-number', [DiserIdNumberController::class, 'store'])->name('diser-number.store')->middleware('permission:diser id number create');
+
+        Route::get('diser-number/{id}', [DiserIdNumberController::class, 'show'])->name('diser-number.show');
+
+        Route::get('diser-number/{id}/edit', [DiserIdNumberController::class, 'edit'])->name('diser-number.edit')->middleware('permission:diser id number edit');
+        Route::post('diser-number/{id}', [DiserIdNumberController::class, 'update'])->name('diser-number.update')->middleware('permission:diser id number edit');
+    });
+
     // ORG STRUCTURES ROUTES
     Route::group(['middleware' => 'permission:org structure access'], function() {
         Route::get('org-structures', [OrgStructureController::class, 'index'])->name('org-structure.index');
@@ -58,7 +71,7 @@ Route::group(['middleware' => ['auth', 'optimizeImages']], function() {
         Route::get('org-structure/{id}/edit', [OrgStructureController::class, 'edit'])->name('org-structure.edit')->middleware('permission:org structure edit');
         Route::post('org-structure/{id}', [OrgStructureController::class, 'update'])->name('org-structure.update')->middleware('permission:org structure edit');
     });
-    
+
 
     // POSITIONS ROUTES
     Route::group(['middleware' => 'permission:position access'], function() {
