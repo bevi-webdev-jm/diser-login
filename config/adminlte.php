@@ -300,6 +300,12 @@ return [
 
     'menu' => [
         [
+            'text'  => 'Diser ID Number',
+            'url'   => 'diser-number',
+            'icon'  => 'fa fa-fw fa-cog',
+            'can'   => ['diser id number access'],
+        ],
+        [
             'text'  => 'settings',
             'url'   => '#',
             'icon'  => 'fa fa-fw fa-cog',
