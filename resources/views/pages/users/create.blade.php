@@ -56,6 +56,14 @@
                             <small class="text-danger">{{$errors->first('position_id')}}</small>
                         </div>
                     </div>
+
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            {{ html()->label(__('adminlte::diser-number.diser_number'), 'diser_number_id')->class(['mb-0']) }}
+                            {{ html()->select('diser_number_id', $diser_numbers,'')->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('diser_number_id')]) }}
+                            <small class="text-danger">{{$errors->first('diser_number_id')}}</small>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">

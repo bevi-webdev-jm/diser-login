@@ -53,6 +53,24 @@
             @enderror
         </div>
 
+        {{-- Diser ID Number field --}}
+        <div class="input-group mb-3">
+            <input type="text" name="diser_number" class="form-control @error('diser_number') is-invalid @enderror"
+                   value="{{ old('diser_number') }}" placeholder="{{ __('adminlte::diser-number.diser_number') }}">
+
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-key {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+
+            @error('diser_number')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
         {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"

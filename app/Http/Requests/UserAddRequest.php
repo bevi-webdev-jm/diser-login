@@ -30,7 +30,7 @@ class UserAddRequest extends FormRequest
                 function ($attribute, $value, $fail) {
                     try {
                         $decryptedId = decrypt($value); // Decrypt the company_id
-    
+
                         if (!Company::where('id', $decryptedId)->exists()) {
                             $fail('The selected company is invalid.');
                         }
@@ -38,14 +38,14 @@ class UserAddRequest extends FormRequest
                         $fail('Invalid company ID.');
                     }
                 }
-            ], 
+            ],
             'name' => [
                 'required'
             ],
             'email' => [
                 'required',
                 Rule::unique((new User)->getTable())
-            ], 
+            ],
             'role_ids' => [
                 'required'
             ]

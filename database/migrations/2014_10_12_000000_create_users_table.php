@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('position_id')->nullable();
+            $table->unsignedBigInteger('diser_id_number_id')->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -32,6 +33,10 @@ return new class extends Migration
 
             $table->foreign('position_id')
                 ->references('id')->on('positions')
+                ->onDelete('cascade');
+
+            $table->foreign('diser_id_number_id')
+                ->references('id')->on('diser_id_numbers')
                 ->onDelete('cascade');
 
             $table->softDeletes();

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Company;
 use App\Models\Position;
 use App\Models\Role;
+use App\Models\DiserIdNumber;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\UserAddRequest;
@@ -56,12 +57,19 @@ class UserController extends Controller
             $positions_arr[encrypt($position->id)] = $position->position;
         }
 
+        $diser_numbers = DiserIdNumber::all();
+        $diser_numbers_arr[''] = '-select-';
+        foreach($diser_numbers as $diser_number) {
+            $diser_numbers_arr[encrypt($diser_number->id)] = $diser_number->id_number;
+        }
+
         $roles = Role::orderBy('name', 'ASC')
             ->get();
 
         return view('pages.users.create')->with([
             'companies' => $companies_arr,
             'positions' => $positions_arr,
+            'diser_numbers' => $diser_numbers_arr,
             'roles' => $roles
         ]);
     }
@@ -77,6 +85,7 @@ class UserController extends Controller
         $user = new User([
             'company_id' => decrypt($request->company_id),
             'position_id' => decrypt($request->position_id),
+            'diser_id_number_id' => decrypt($request->diser_number_id),
             'name' => $request->name,
             'email' => $request->email,
             'password' => $password,
@@ -139,6 +148,18 @@ class UserController extends Controller
             $positions_arr[$encrypted_id] = $position->position;
         }
 
+        $diser_numbers = DiserIdNumber::all();
+        $diser_numbers_arr[''] = '-select-';
+        $diser_number_selected_id = '';
+        foreach($diser_numbers as $diser_number) {
+            $encrypted_id = encrypt($diser_number->id);
+            if($user->diser_id_number_id == $diser_number->id) {
+                $diser_number_selected_id = $encrypted_id;
+            }
+
+            $diser_numbers_arr[$encrypted_id] = $diser_number->id_number;
+        }
+
         $roles = Role::orderBy('name', 'ASC')
             ->get();
 
@@ -148,9 +169,11 @@ class UserController extends Controller
             'user' => $user,
             'companies' => $companies_arr,
             'positions' => $positions_arr,
+            'diser_numbers' => $diser_numbers_arr,
             'roles' => $roles,
             'company_selected_id' => $company_selected_id,
             'position_selected_id' => $position_selected_id,
+            'diser_number_selected_id' => $diser_number_selected_id,
             'user_roles' => $user_roles
         ]);
     }
@@ -171,7 +194,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
         ]);
-        
+
         $role_ids = explode(',', $request->role_ids);
         $user->syncRoles($role_ids);
 

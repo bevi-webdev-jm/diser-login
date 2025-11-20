@@ -35,12 +35,13 @@ class AssignAccount extends Component
 
     public function mount($diser_number) {
         $this->diser_number = $diser_number;
-        if(!empty($diser_number)) {
+        $diser_selected_accounts = Session::get('diser_selected_accounts', []);
+        if(!empty($diser_number) && empty($diser_selected_accounts)) {
             $assigned_accounts = $diser_number->accounts()->pluck('id')->map(fn($id) => (int) $id)->toArray();
             $this->selected_accounts = array_fill_keys($assigned_accounts, true);
             $this->saveToSession();
         } else {
-            $assigned_accounts = Session::get('diser_selected_accounts', []);
+            $this->selected_accounts = array_fill_keys($diser_selected_accounts, true);
         }
     }
 
