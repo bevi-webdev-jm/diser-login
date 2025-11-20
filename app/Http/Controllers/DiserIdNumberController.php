@@ -17,6 +17,8 @@ class DiserIdNumberController extends Controller
     use SettingTrait;
 
     public function index(Request $request) {
+        Session::forget('diser_selected_accounts');
+
         $search = trim($request->get('search'));
 
         $diser_numbers = DiserIdNumber::orderBy('created_at', 'DESC')
@@ -47,7 +49,7 @@ class DiserIdNumberController extends Controller
         // logs
         activity('created')
             ->performedOn($diser_number)
-            ->log(':causer.name created Diser ID number :subject.diser_id_number');
+            ->log(':causer.name created Diser ID number :subject.id_number');
 
         return redirect()->route('diser-number.index')->with([
             'message_success' => 'Diser ID Number has been successfully added.'
@@ -70,8 +72,32 @@ class DiserIdNumberController extends Controller
         ]);
     }
 
-    public function update() {
+    public function update(DiserIdNumberEditRequest $request, $id) {
+        $diser_number = DiserIdNumber::findOrFail(decrypt($id));
+        $assigned_accounts = Session::get('diser_selected_accounts');
 
+        $changes_arr['old'] = $diser_number->getOriginal();
+        $changes_arr['old']['arr'] = $diser_number->accounts()->pluck('id')->toArray();
+
+        $diser_number->update([
+            'id_number' => $request->diser_number,
+            'area' => $request->area,
+        ]);
+
+        $this->syncAccounts($diser_number, $assigned_accounts);
+
+        $changes_arr['changes'] = $diser_number->getChanges();
+        $changes_arr['changes']['arr'] = $diser_number->accounts()->pluck('id')->toArray();
+
+        // logs
+        activity('updated')
+            ->performedOn($diser_number)
+            ->withProperties($changes_arr)
+            ->log(':causer.name updated Diser ID number :subject.diser_id_number');
+
+        return redirect()->route('diser-number.edit', encrypt($diser_number->id))->with([
+            'message_success' => 'Diser ID Number has been successfully updated.'
+        ]);
     }
 
     private function syncAccounts($diser_number, $assigned_accounts) {

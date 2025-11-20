@@ -2,18 +2,18 @@
 
 {{-- Customize layout sections --}}
 @section('subtitle', __('adminlte::diser-number.diser_numbers'))
-@section('content_header_title', __('adminlte::diser-number.new_diser_number'))
+@section('content_header_title', __('adminlte::diser-number.update_diser_number'))
 @section('content_header_subtitle', __('adminlte::diser-number.diser_numbers'))
 
 {{-- Content body: main page content --}}
 @section('content_body')
-{{ html()->form('POST', route('diser-number.store'))->open() }}
+{{ html()->form('POST', route('diser-number.update', encrypt($diser_number->id)))->open() }}
 
     <div class="card">
         <div class="card-header py-2">
             <div class="row">
                 <div class="col-lg-6 align-middle">
-                    <strong class="text-lg">{{__('adminlte::diser-number.new_diser_number')}}</strong>
+                    <strong class="text-lg">{{__('adminlte::diser-number.update_diser_number')}}</strong>
                 </div>
                 <div class="col-lg-6 text-right">
                     <a href="{{route('diser-number.index')}}" class="btn btn-secondary btn-xs">
