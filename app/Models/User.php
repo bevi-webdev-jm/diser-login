@@ -94,6 +94,15 @@ class User extends Authenticatable
     public function position() {
         return $this->belongsTo('App\Models\Position');
     }
+
+    public function logins() {
+        return $this->hasMany('App\Models\DiserLogin');
+    }
+
+    public function diser_number() {
+        return $this->belongsTo('App\Models\DiserIdNumber', 'diser_id_number_id', 'id');
+    }
+
     /**
      * Get the org structure trees associated with the user.
      *
