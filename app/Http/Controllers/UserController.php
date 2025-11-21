@@ -191,6 +191,8 @@ class UserController extends Controller
 
         $user->update([
             'company_id' => decrypt($request->company_id),
+            'position_id' => decrypt($request->position_id),
+            'diser_id_number_id' => decrypt($request->diser_number_id),
             'name' => $request->name,
             'email' => $request->email,
         ]);

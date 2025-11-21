@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Notifications\TestNotification;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $diser_login = Session::get('diser_login', null);
+
+        return view('home')->with([
+            'diser_login' => $diser_login
+        ]);
     }
 }

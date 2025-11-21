@@ -9,14 +9,11 @@
 {{-- Content body: main page content --}}
 
 @section('content_body')
-    <p>{{ __('adminlte::adminlte.welcome_message') }}</p>
-    <a href="{{route('test-notification')}}" class="btn btn-primary btn-sm">
-        {{ __('adminlte::adminlte.test_notification') }}
-    </a>
-
-    <h1 class="text-3xl font-bold underline">
-        Hello world!
-    </h1>
+    @if(empty($diser_login))
+        <livewire:home.accounts />
+    @else
+        {{ var_dump($diser_login) }}
+    @endif
 @stop
 
 {{-- Push extra CSS --}}

@@ -20,7 +20,7 @@ class AssignAccount extends Component
 
     public function render()
     {
-        $accounts = Account::orderBy('account_code', 'ASC')
+        $accounts = Account::orderBy('id', 'ASC')
             ->when(!empty($this->search), function($query) {
                 $query->where('account_code', 'LIKE', '%'.$this->search.'%')
                     ->orWhere('account_name', 'LIKE', '%'.$this->search.'%')
