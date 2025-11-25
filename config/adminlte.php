@@ -300,6 +300,11 @@ return [
 
     'menu' => [
         [
+            'text'  => 'Home',
+            'url'   => 'home',
+            'icon'  => 'fa fa-fw fa-home',
+        ],
+        [
             'text'  => 'Diser ID Number',
             'url'   => 'diser-number',
             'icon'  => 'fa fa-fw fa-cog',

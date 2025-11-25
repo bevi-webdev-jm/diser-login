@@ -19,6 +19,9 @@ return new class extends Migration
             $table->decimal('longitude', 10, 7);
             $table->decimal('latitude', 10, 7);
             $table->string('accuracy')->nullable();
+            $table->decimal('time_out_longitude', 10, 7)->nullable();
+            $table->decimal('time_out_latitude', 10, 7)->nullable();
+            $table->string('time_out_accuracy')->nullable();
             $table->dateTime('time_in')->nullable();
             $table->dateTime('time_out')->nullable();
             $table->timestamps();

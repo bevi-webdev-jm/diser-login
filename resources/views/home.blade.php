@@ -12,7 +12,7 @@
     @if(empty($diser_login))
         <livewire:home.accounts />
     @else
-        {{ var_dump($diser_login) }}
+        <livewire:home.activities :diser_login="$diser_login" />
     @endif
 @stop
 

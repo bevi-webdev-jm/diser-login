@@ -17,6 +17,9 @@ class DiserLogin extends Model
         'longitude',
         'latitude',
         'accuracy',
+        'time_out_longitude',
+        'time_out_latitude',
+        'time_out_accuracy',
         'time_in',
         'time_out',
     ];

@@ -65,6 +65,9 @@
             @endif
         </h1>
     @endif
+
+    {{-- diser login section --}}
+    <livewire:diser-login.logged />
 @stop
 
 {{-- Rename section content to content_body --}}
