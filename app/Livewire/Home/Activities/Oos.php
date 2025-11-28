@@ -85,15 +85,15 @@ class Oos extends Component
                     ->first();
                 if(!empty($oos)) {
                     $oos->update([
-                        'days_of_oos' => $data['days_of_oos'] ?? null,
-                        'maxcap_target' => $data['maxcap_target'] ?? null
+                        'days_of_oos' => !empty($data['days_of_oos']) ? $data['days_of_oos'] : null,
+                        'maxcap_target' => !empty($data['maxcap_target']) ? $data['maxcap_target'] : null
                     ]);
                 } else {
                     $oos = new DiserActivityOOS([
                         'diser_activity_id' => $this->diser_activities['activity']->id,
                         'product_id' => $product_id,
-                        'days_of_oos' => $data['days_of_oos'] ?? null,
-                        'maxcap_target' => $data['maxcap_target'] ?? null
+                        'days_of_oos' =>  !empty($data['days_of_oos']) ? $data['days_of_oos'] : null,
+                        'maxcap_target' => !empty($data['maxcap_target']) ? $data['maxcap_target'] : null
                     ]);
                     $oos->save();
                 }

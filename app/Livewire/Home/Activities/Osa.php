@@ -86,15 +86,15 @@ class Osa extends Component
                     ->first();
                 if(!empty($osa)) {
                     $osa->update([
-                        'inventory_count' => $data['inventory_count'] ?? '',
-                        'maxcap_target' => $data['maxcap_target'] ?? ''
+                        'inventory_count' => !empty($data['inventory_count']) ? $data['inventory_count'] : NULL,
+                        'maxcap_target' => !empty($data['maxcap_target']) ? $data['maxcap_target'] : NULL
                     ]);
                 } else {
                     $osa = new DiserActivityOSA([
                         'diser_activity_id' => $this->diser_activities['activity']->id,
                         'product_id' => $product_id,
-                        'inventory_count' => $data['inventory_count'] ?? '',
-                        'maxcap_target' => $data['maxcap_target'] ?? ''
+                        'inventory_count' => !empty($data['inventory_count']) ? $data['inventory_count'] : NULL,
+                        'maxcap_target' => !empty($data['maxcap_target']) ? $data['maxcap_target'] : NULL
                     ]);
                     $osa->save();
                 }
