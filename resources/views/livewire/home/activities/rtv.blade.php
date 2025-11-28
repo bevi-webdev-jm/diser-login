@@ -19,19 +19,19 @@
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="">RTV Number</label>
-                                    <input type="text" class="form-control form-control-sm" wire:model.live="rtv_data.{{ $product->id }}.inventory_count">
+                                    <input type="text" class="form-control form-control-sm" wire:model.live="rtv_data.{{ $product->id }}.rtv_number" placeholder="RTV Number">
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="">Reason of RTV</label>
-                                    <input type="text" class="form-control form-control-sm" wire:model.live="rtv_data.{{ $product->id }}.expiry_date">
+                                    <input type="text" class="form-control form-control-sm" wire:model.live="rtv_data.{{ $product->id }}.reason" placeholder="Reason">
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="">Inventory Count</label>
-                                    <input type="number" class="form-control form-control-sm" wire:model.live="rtv_data.{{ $product->id }}.expiry_date">
+                                    <input type="number" class="form-control form-control-sm" wire:model.live="rtv_data.{{ $product->id }}.inventory_count" placeholder="Inventory count">
                                 </div>
                             </div>
                         </div>
