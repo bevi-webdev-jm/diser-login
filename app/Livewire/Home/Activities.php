@@ -33,7 +33,7 @@ class Activities extends Component
     }
 
     public function mount() {
-        $this->step = 2;
+        $this->step = 3;
         $this->merchandiser_name = auth()->user()->name;
 
         $this->activity = DiserActivity::where('diser_login_id', $this->diser_login->id)

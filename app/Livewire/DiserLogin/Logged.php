@@ -30,6 +30,7 @@ class Logged extends Component
         ]);
 
         Session::forget('diser_login');
+        Session::forget('diser_activities');
 
         return redirect()->to('/home')->with([
             'message_success' => 'Signed out successfully'
