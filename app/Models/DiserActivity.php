@@ -13,6 +13,7 @@ class DiserActivity extends Model
     protected $fillable = [
         'diser_login_id',
         'area',
+        'pms_name',
         'store_in_charge',
         'total_findings'
     ];

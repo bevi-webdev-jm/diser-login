@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('diser_login_id')->nullable();
             $table->string('area')->nullable();
+            $table->string('pms_name')->nullable();
             $table->string('store_in_charge')->nullable();
             $table->text('total_findings')->nullable();
             $table->timestamps();
