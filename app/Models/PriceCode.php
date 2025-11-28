@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class PriceCode extends Model
 {
     use SoftDeletes;
 
     protected $connection = 'mysql_sms';
-    protected $table = 'products';
+    protected $table = 'price_codes';
 
-    public function price_codes() {
-        return $this->hasMany('App\Models\PriceCode');
+    public function products() {
+        return $this->hasMany('App\Models\Product');
     }
 }

@@ -12,20 +12,20 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-lg-4">
-                                <strong>{{ $product->stock_code }}</strong><br>
+                                <strong class="text-lg">{{ $product->stock_code }}</strong><br>
                                 <span>{{ $product->description }}</span><br>
                                 <span>{{ $product->size }}</span>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">Days of OOS</label>
-                                    <input type="number" class="form-control form-control-sm" wire:model.live="oos_data.{{ $product->id }}.days_of_oos">
+                                    <input type="number" class="form-control form-control-sm" wire:model.live="oos_data.{{ $product->id }}.days_of_oos" placeholder="Days of out of stock">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">Maxcap Target</label>
-                                    <input type="number" class="form-control form-control-sm" wire:model.live="oos_data.{{ $product->id }}.maxcap_target">
+                                    <input type="number" class="form-control form-control-sm" wire:model.live="oos_data.{{ $product->id }}.maxcap_target" placeholder="Maxcap target">
                                 </div>
                             </div>
                         </div>

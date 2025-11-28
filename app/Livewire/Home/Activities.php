@@ -5,10 +5,15 @@ namespace App\Livewire\Home;
 use Livewire\Component;
 use Illuminate\Support\Facades\Session;
 
+use App\Models\DiserActivity;
+
 class Activities extends Component
 {
     public $diser_login;
+    public $activity;
     public $step;
+    public $merchandiser_name;
+    public $area, $store_in_charge, $pms_name;
 
     public $steps_arr = [
         1 => 'OOS Reports',
@@ -23,22 +28,21 @@ class Activities extends Component
 
     public function render()
     {
+        $this->saveActivity();
         return view('livewire.home.activities');
     }
 
     public function mount() {
-        $this->step = 1;
+        $this->step = 2;
+        $this->merchandiser_name = auth()->user()->name;
 
-        $diser_activities = [
-            'step' => $this->step,
-            'oos_data' => [],
-            'osa_data' => [],
-            'freshness_data' => [],
-            'rtv_data' => [],
-            'diser_login' => $this->diser_login
-        ];
+        $this->activity = DiserActivity::where('diser_login_id', $this->diser_login->id)
+            ->first();
+        $this->area = $this->activity->area ?? '';
+        $this->pms_name = $this->activity->pms_name ?? '';
+        $this->store_in_charge = $this->activity->store_in_charge ?? '';
 
-        Session::put('diser_activities', $diser_activities);
+        $this->saveActivity();
     }
 
     public function nextStep() {
@@ -56,6 +60,29 @@ class Activities extends Component
     public function saveSession() {
         $diser_activities = Session::get('diser_activities');
         $diser_activities['step'] = $this->step;
+        $diser_activities['activity'] = $this->activity;
         Session::put('diser_activities', $diser_activities);
+    }
+
+    public function saveActivity() {
+
+        if(!empty($this->activity)) {
+            $this->activity->update([
+                'area' => $this->area,
+                'pms_name' => $this->pms_name,
+                'store_in_charge' => $this->store_in_charge
+            ]);
+        } else {
+            $this->activity = new DiserActivity([
+                'diser_login_id' => $this->diser_login->id,
+                'area' => $this->area,
+                'pms_name' => $this->pms_name,
+                'store_in_charge' => $this->store_in_charge,
+                'total_findings' => NULL
+            ]);
+            $this->activity->save();
+        }
+
+        $this->saveSession();
     }
 }

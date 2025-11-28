@@ -19,13 +19,13 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">Inventory Count</label>
-                                    <input type="number" class="form-control form-control-sm" wire:model.live="osa_data.{{ $product->id }}.inventory_count">
+                                    <input type="number" class="form-control form-control-sm" wire:model.live="osa_data.{{ $product->id }}.inventory_count" placeholder="Inventory Count">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">Maxcap Target</label>
-                                    <input type="number" class="form-control form-control-sm" wire:model.live="osa_data.{{ $product->id }}.maxcap_target">
+                                    <input type="number" class="form-control form-control-sm" wire:model.live="osa_data.{{ $product->id }}.maxcap_target" placeholder="Maxcap target">
                                 </div>
                             </div>
                         </div>

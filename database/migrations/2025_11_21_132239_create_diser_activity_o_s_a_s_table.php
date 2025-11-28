@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('diser_activity_id')->nullable();
             $table->unsignedBigInteger('product_id')->nullable();
-            $table->integer('invetory_count')->nullable();
+            $table->integer('inventory_count')->nullable();
             $table->integer('maxcap_target')->nullable();
             $table->timestamps();
 

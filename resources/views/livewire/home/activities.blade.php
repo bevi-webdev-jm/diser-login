@@ -9,35 +9,35 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="date">{{ __('adminlte::home.date') }}</label>
-                        <input type="date" id="date" class="form-control" value="" disabled>
+                        <input type="date" id="date" class="form-control" wire:model="date" disabled>
                     </div>
                 </div>
 
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="merchandiser_name">{{ __('adminlte::home.merchandiser_name') }}</label>
-                        <input type="text" id="merchandiser_name" class="form-control" value="">
+                        <input type="text" id="merchandiser_name" class="form-control" wire:model.live="merchandiser_name">
                     </div>
                 </div>
 
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="area">{{ __('adminlte::home.area') }}</label>
-                        <input type="text" id="area" class="form-control" value="">
+                        <input type="text" id="area" class="form-control" wire:model.live="area">
                     </div>
                 </div>
 
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="pms_name">{{ __('adminlte::home.pms_name') }}</label>
-                        <input type="text" id="pms_name" class="form-control" value="">
+                        <input type="text" id="pms_name" class="form-control" wire:model="pms_name">
                     </div>
                 </div>
 
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="store_in_charge">{{ __('adminlte::home.store_in_charge') }}</label>
-                        <input type="text" id="store_in_charge" class="form-control" value="">
+                        <input type="text" id="store_in_charge" class="form-control" wire:model="store_in_charge">
                     </div>
                 </div>
             </div>

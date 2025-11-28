@@ -13,7 +13,7 @@ class DiserActivityOOS extends Model
     protected $fillable = [
         'diser_activity_id',
         'product_id',
-        'day_of_oos',
+        'days_of_oos',
         'maxcap_target',
     ];
 
