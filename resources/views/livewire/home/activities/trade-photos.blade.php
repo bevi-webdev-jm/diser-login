@@ -29,8 +29,10 @@
                                     <input type="text" class="form-control form-control-sm border-0" wire:model.live="pictures_arr.{{$key}}.title">
                                 </td>
                                 <td class="p-0 align-middle text-center">
-                                    @if($picture['picture'])
+                                    @if(empty($picture['id']) && $picture['picture'])
                                         <img src="{{$picture['picture']->temporaryUrl()}}" style="max-height: 50px">
+                                    @else
+                                        <img src="{{asset($picture['picture'])}}" style="max-height: 50px">
                                     @endif
                                 </td>
                                 <td class="p-0 text-center align-middle">
