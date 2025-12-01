@@ -73,7 +73,7 @@ class Freshness extends Component
         Session::put('diser_activities', $this->diser_activities);
     }
 
-    public function updatedFreshnessData() {
+    public function updated() {
         $this->saveFreshness();
         $this->saveSession();
     }

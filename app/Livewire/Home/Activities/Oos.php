@@ -72,7 +72,7 @@ class Oos extends Component
         Session::put('diser_activities', $this->diser_activities);
     }
 
-    public function updatedOosData() {
+    public function updated() {
         $this->saveOOS();
         $this->saveSession();
     }

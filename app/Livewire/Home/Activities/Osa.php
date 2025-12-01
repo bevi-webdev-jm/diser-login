@@ -73,7 +73,7 @@ class Osa extends Component
         Session::put('diser_activities', $this->diser_activities);
     }
 
-    public function updatedOsaData() {
+    public function updated() {
         $this->saveOSA();
         $this->saveSession();
     }

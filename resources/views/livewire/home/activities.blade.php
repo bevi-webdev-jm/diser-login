@@ -126,7 +126,7 @@
                 <button type="button"
                     wire:click="prevStep"
                     @if($step === 1) disabled @endif
-                    class="px-4 py-2 rounded border {{ $step === 1 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-700' }}">
+                    class="px-4 py-1 rounded border {{ $step === 1 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-700' }}">
                     Previous
                 </button>
 
@@ -136,7 +136,7 @@
                     <button type="button"
                         wire:click="nextStep"
                         @if($step === count($steps_arr)) disabled @endif
-                        class="px-4 py-2 {{ $step === count($steps_arr) ? 'bg-blue-400 text-white cursor-not-allowed' : 'rounded bg-primary text-white' }}">
+                        class="px-3 py-1 {{ $step === count($steps_arr) ? 'bg-blue-400 text-white cursor-not-allowed' : 'rounded bg-primary text-white' }}">
                         Next
                     </button>
                 </div>

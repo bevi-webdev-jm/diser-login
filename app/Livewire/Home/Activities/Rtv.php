@@ -75,7 +75,7 @@ class Rtv extends Component
         Session::put('diser_activities', $this->diser_activities);
     }
 
-    public function updatedRtvData() {
+    public function updated() {
         $this->saveRTV();
         $this->saveSession();
     }
