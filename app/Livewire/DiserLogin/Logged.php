@@ -9,6 +9,7 @@ class Logged extends Component
 {
     public $diser_login;
     public $longitude, $latitude, $accuracy;
+    public $confirm_signout = false;
 
     public function render()
     {
@@ -21,11 +22,18 @@ class Logged extends Component
 
     public function signOut() {
         $this->dispatch('load-location');
+        $this->confirm_signout = true;
+    }
 
+    public function cancelSignOut() {
+        $this->confirm_signout = false;
+    }
+
+    public function updateLogin() {
         $this->diser_login->update([
-            'time_out_longitude' => $this->longitude,
-            'time_out_latitude' => $this->latitude,
-            'time_out_accuracy' => $this->accuracy,
+            'time_out_longitude' => $this->longitude ?? '',
+            'time_out_latitude' => $this->latitude ?? '',
+            'time_out_accuracy' => $this->accuracy ?? '',
             'time_out' => now()
         ]);
 

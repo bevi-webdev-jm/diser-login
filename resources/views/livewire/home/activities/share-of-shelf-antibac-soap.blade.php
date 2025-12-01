@@ -9,16 +9,22 @@
         <div class="card-body p-1">
 
             <ul class="list-group">
-                @foreach($share_of_shelf_data as $data)
+                @foreach($share_of_shelf_data as $key => $data)
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <label for="">Brand</label>
-                            <input type="text" class="form-control form-control-sm">
+                            <input type="text" class="form-control form-control-sm" placeholder="Brand" wire:model.blur="share_of_shelf_data.{{ $key }}.brand">
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <label for="">Size in mm.</label>
-                            <input type="text" class="form-control form-control-sm">
+                            <input type="text" class="form-control form-control-sm" placeholder="Size in mm." wire:model.blur="share_of_shelf_data.{{ $key }}.size">
+                        </div>
+                        <div class="col-lg-2 text-center align-middle">
+                            <button class="btn btn-danger btn-sm" wire:click.prevent="removeLine({{ $key }})">
+                                <i  class="fa fa-trash-alt"></i>
+                                REMOVE
+                            </button>
                         </div>
                     </div>
                 </li>

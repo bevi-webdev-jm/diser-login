@@ -129,6 +129,10 @@
     @script
     <script>
         $wire.on('load-location', () => {
+            getLocation();
+        });
+
+        function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
 
@@ -141,7 +145,7 @@
             } else {
                 console.log("Geolocation is not supported by this browser.");
             }
-        });
+        }
     </script>
     @endscript
 </div>
