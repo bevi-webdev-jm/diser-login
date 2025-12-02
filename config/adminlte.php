@@ -305,6 +305,12 @@ return [
             'icon'  => 'fa fa-fw fa-home',
         ],
         [
+            'text'  => 'Branch Maintenance',
+            'url'   => 'branch-maintenance',
+            'icon'  => 'fa fa-fw fa-cog',
+            'can'   => ['branch maintenance access'],
+        ],
+        [
             'text'  => 'Diser ID Number',
             'url'   => 'diser-number',
             'icon'  => 'fa fa-fw fa-cog',

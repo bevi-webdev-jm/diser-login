@@ -17,6 +17,12 @@ class PermissionSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         $permissions_arr = [
+            'Branch Maintenance' => [
+                'branch maintenance access' => 'Allow user to access diser id number list and details.',
+                'branch maintenance create' => 'Allow user to create diser id number.',
+                'branch maintenance edit'   => 'Allow user to edit diser id number details.',
+                'branch maintenance delete' => 'Allow user to delete diser id number.',
+            ],
             'Diser ID Numbers' => [
                 'diser id number access' => 'Allow user to access diser id number list and details.',
                 'diser id number create' => 'Allow user to create diser id number.',

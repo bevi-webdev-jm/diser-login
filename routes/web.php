@@ -7,7 +7,7 @@ use App\Http\Controllers\{
     RoleController, UserController, CompanyController,
     SystemLogController, SystemSettingController, HomeController,
     NotificationController, PositionController, OrgStructureController,
-    DiserIdNumberController
+    DiserIdNumberController, BranchMaintenanceController
 };
 
 /*
@@ -47,6 +47,18 @@ Route::group(['middleware' => ['auth', 'optimizeImages']], function() {
     // NOTIFICATION
     Route::get('test-notification', [NotificationController::class, 'testNotification'])->name('test-notification');
     Route::get('notifications', [NotificationController::class, 'index'])->name('notifications');
+
+    // BRANCH MAINTENANCE
+    Route::group(['middleware' => 'permission:branch maintenance access'], function() {
+        Route::get('branch-maintenance', [BranchMaintenanceController::class, 'index'])->name('branch-maintenance.index');
+        Route::get('branch-maintenance/create', [BranchMaintenanceController::class, 'create'])->name('branch-maintenance.create')->middleware('permission:branch maintenance create');
+        Route::post('branch-maintenance',[BranchMaintenanceController::class, 'store'])->name('branch-maintenance.store')->middleware('permission:branch maintenance create');
+
+        Route::get('branch-maintenance/{id}', [BranchMaintenanceController::class, 'show'])->name('branch-maintenance.show');
+
+        Route::get('branch-maintenance/{id}/edit', [BranchMaintenanceController::class, 'edit'])->name('branch-maintenance.edit')->middleware('permission:branch maintenance edit');
+        Route::post('branch-maintenance/{id}', [BranchMaintenanceController::class, 'update'])->name('branch-maintenance.update')->middleware('permission:branch maintenance edit');
+    });
 
     // DISER ID NUMBER
     Route::group(['middleware' => 'permission:diser id number access'], function() {
