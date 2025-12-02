@@ -18,7 +18,7 @@
                             <input type="text" class="form-control form-control-sm" wire:model.blur="share_of_shelf_data.{{ $key }}.size" placeholder="Size in mm.">
                         </div>
                         <div class="col-lg-2 text-center align-middle">
-                            <button class="btn btn-danger btn-sm" wire:click.prevent="removeLine({{ $key }})">
+                            <button class="btn btn-danger btn-sm mt-2" wire:click.prevent="removeLine({{ $key }})">
                                 <i  class="fa fa-trash-alt"></i>
                                 REMOVE
                             </button>

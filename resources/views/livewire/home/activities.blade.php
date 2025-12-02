@@ -9,35 +9,35 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="date">{{ __('adminlte::home.date') }}</label>
-                        <input type="date" id="date" class="form-control" wire:model="date" disabled>
+                        <input type="date" id="date" class="form-control form-control-sm" wire:model="date" disabled>
                     </div>
                 </div>
 
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="merchandiser_name">{{ __('adminlte::home.merchandiser_name') }}</label>
-                        <input type="text" id="merchandiser_name" class="form-control" wire:model.live="merchandiser_name">
+                        <input type="text" id="merchandiser_name" class="form-control form-control-sm" wire:model.live="merchandiser_name">
                     </div>
                 </div>
 
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="area">{{ __('adminlte::home.area') }}</label>
-                        <input type="text" id="area" class="form-control" wire:model.live="area">
+                        <input type="text" id="area" class="form-control form-control-sm" wire:model.live="area">
                     </div>
                 </div>
 
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="pms_name">{{ __('adminlte::home.pms_name') }}</label>
-                        <input type="text" id="pms_name" class="form-control" wire:model="pms_name">
+                        <input type="text" id="pms_name" class="form-control form-control-sm" wire:model="pms_name">
                     </div>
                 </div>
 
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label for="store_in_charge">{{ __('adminlte::home.store_in_charge') }}</label>
-                        <input type="text" id="store_in_charge" class="form-control" wire:model="store_in_charge">
+                        <input type="text" id="store_in_charge" class="form-control form-control-sm" wire:model="store_in_charge">
                     </div>
                 </div>
             </div>
@@ -79,42 +79,42 @@
             <div class="space-y-4">
                 @if ($step === 1)
                     <div>
-                        <h4 class="font-medium">Out of Stock Reports</h4>
+                        <h4 class="font-medium">OUT OF STOCK REPORTS</h4>
                         <livewire:home.activities.oos/>
                     </div>
                 @elseif ($step === 2)
                     <div>
-                        <h4 class="font-medium">On Shelf Availability Reports</h4>
+                        <h4 class="font-medium">ON SHELF AVAILABILITY REPORTS</h4>
                         <livewire:home.activities.osa/>
                     </div>
                 @elseif ($step === 3)
                     <div>
-                        <h4 class="font-medium">Inventory Freshness</h4>
+                        <h4 class="font-medium">INVENTORY FRESHNESS REPORTS</h4>
                         <livewire:home.activities.freshness/>
                     </div>
                 @elseif ($step === 4)
                     <div>
-                        <h4 class="font-medium">Return to Vendor Reports</h4>
+                        <h4 class="font-medium">RETURN TO VENDOR REPORTS</h4>
                         <livewire:home.activities.rtv/>
                     </div>
                 @elseif ($step === 5)
                     <div>
-                        <h4 class="font-medium">Share of Shelf Bath</h4>
+                        <h4 class="font-medium">SHARE OF SHELF BATH</h4>
                         <livewire:home.activities.share_of_shelf_bath/>
                     </div>
                 @elseif ($step === 6)
                     <div>
-                        <h4 class="font-medium">Share of Shelf Antibac Soap</h4>
+                        <h4 class="font-medium">SHARE OF SHELF ANTIBAC SOAP</h4>
                         <livewire:home.activities.share_of_shelf_antibac_soap/>
                     </div>
                 @elseif ($step === 7)
                     <div>
-                        <h4 class="font-medium">Trade Photos</h4>
+                        <h4 class="font-medium">TRADE PHOTOS</h4>
                         <livewire:home.activities.trade_photos/>
                     </div>
                 @elseif ($step === 8)
                     <div>
-                        <h4 class="font-medium">Total Findings</h4>
+                        <h4 class="font-medium">TOTAL FINDINGS</h4>
                         <livewire:home.activities.total_findings/>
                     </div>
                 @endif
