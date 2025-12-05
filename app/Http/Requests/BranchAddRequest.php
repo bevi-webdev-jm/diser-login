@@ -28,6 +28,9 @@ class BranchAddRequest extends FormRequest
             'branch_name' => [
                 'required'
             ],
+            'account_id' => [
+                'required'
+            ],
             'area_id' => [
                 'required'
             ],

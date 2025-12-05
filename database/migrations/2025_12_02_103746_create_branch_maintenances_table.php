@@ -14,12 +14,16 @@ return new class extends Migration
         Schema::create('branch_maintenances', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('account_id')->nullable();
             $table->unsignedBigInteger('classification_id')->nullable();
             $table->unsignedBigInteger('area_id')->nullable();
             $table->unsignedBigInteger('region_id')->nullable();
             $table->string('branch_code')->nullable();
             $table->string('branch_name')->nullable();
             $table->string('status')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('accuracy')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
