@@ -25,4 +25,8 @@ return [
     'data_per_page'     => 'Data per page',
     'email_sending'     => 'Email sending',
     'save_settings'     => 'Save Settings',
+    'longitude'         => 'Longitude',
+    'latitude'          => 'Latitude',
+    'accuracy'          => 'Accuracy',
+    'refresh'           => 'Refresh',
 ];
