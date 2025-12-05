@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('branch_maintenances', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('account_id')->nullable();
             $table->unsignedBigInteger('classification_id')->nullable();
             $table->unsignedBigInteger('area_id')->nullable();
             $table->unsignedBigInteger('region_id')->nullable();

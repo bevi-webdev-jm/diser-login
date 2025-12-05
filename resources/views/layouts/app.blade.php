@@ -112,6 +112,7 @@
 
 {{-- plugins --}}
 @section('iCheckBoostrap', true)
+@section('plugins.Select2', true)
 
 {{-- Add common Javascript/Jquery code --}}
 
@@ -135,7 +136,7 @@
         });
     });
 
-
+    $('.select2').select2();
 </script>
 @endpush
 
@@ -147,6 +148,12 @@
 <style type="text/css">
     img {
         display: inline;
+    }
+    .select2 {
+            background-color: #fff;
+            border: .5px solid #dfe5eb;
+            border-radius: .25rem;
+            box-shadow: inset 0 0 0  transparent;
     }
 </style>
 @endpush

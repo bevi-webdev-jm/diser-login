@@ -12,4 +12,5 @@ return [
     'branch_location'           => 'Branch Location',
     'reload_location'           => 'Reload Location',
     'save_branch'               => 'Save Branch',
+    'account'                   => 'Account',
 ];
