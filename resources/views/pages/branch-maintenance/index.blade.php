@@ -64,17 +64,17 @@
                                         {{$branch->status}}
                                     </td>
                                     <td class="align-middle text-right p-0 pr-1">
-                                        <a href="{{route('company.show', encrypt($branch->id))}}" class="btn btn-info btn-xs mb-0 ml-0">
+                                        <a href="{{route('branch-maintenance.show', encrypt($branch->id))}}" class="btn btn-info btn-xs mb-0 ml-0">
                                             <i class="fa fa-list"></i>
                                             {{__('adminlte::utilities.view')}}
                                         </a>
-                                        @can('company edit')
-                                            <a href="{{route('company.edit', encrypt($branch->id))}}" class="btn btn-success btn-xs mb-0 ml-0">
+                                        @can('branch maintenance edit')
+                                            <a href="{{route('branch-maintenance.edit', encrypt($branch->id))}}" class="btn btn-success btn-xs mb-0 ml-0">
                                                 <i class="fa fa-pen-alt"></i>
                                                 {{__('adminlte::utilities.edit')}}
                                             </a>
                                         @endcan
-                                        @can('company delete')
+                                        @can('branch maintenance delete')
                                             <a href="" class="btn btn-danger btn-xs mb-0 ml-0 btn-delete" data-id="{{encrypt($branch->id)}}">
                                                 <i class="fa fa-trash-alt"></i>
                                                 {{__('adminlte::utilities.delete')}}

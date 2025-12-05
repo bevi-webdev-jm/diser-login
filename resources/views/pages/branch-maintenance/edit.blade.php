@@ -2,7 +2,7 @@
 
 {{-- Customize layout sections --}}
 @section('subtitle', __('adminlte::branch-maintenance.branch_maintenance'))
-@section('content_header_title', __('adminlte::branch-maintenance.new_branch'))
+@section('content_header_title', __('adminlte::branch-maintenance.update_branch'))
 @section('content_header_subtitle', __('adminlte::branch-maintenance.branch_maintenance'))
 
 {{-- Content body: main page content --}}
@@ -13,7 +13,7 @@
         <div class="card-header py-2">
             <div class="row">
                 <div class="col-lg-6 align-middle">
-                    <strong class="text-lg">{{__('adminlte::branch-maintenance.new_branch')}}</strong>
+                    <strong class="text-lg">{{__('adminlte::branch-maintenance.update_branch')}}</strong>
                 </div>
                 <div class="col-lg-6 text-right">
                     <a href="{{ route('branch-maintenance.index') }}" class="btn btn-secondary btn-sm">
@@ -29,7 +29,7 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         {{ html()->label(__('adminlte::branch-maintenance.account'), 'account_id')->class(['mb-0']) }}
-                        {{ html()->select('account_id', $accounts,'')->class(['form-control', 'form-control-sm', 'select2', 'is-invalid' => $errors->has('account_id')]) }}
+                        {{ html()->select('account_id', $accounts,$selected_ids['account_id'])->class(['form-control', 'form-control-sm', 'select2', 'is-invalid' => $errors->has('account_id')]) }}
                         <small class="text-danger">{{$errors->first('account_id')}}</small>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         {{ html()->label(__('adminlte::branch-maintenance.branch_code'), 'name')->class(['mb-0']) }}
-                        {{ html()->input('text', 'branch_code', '')->placeholder(__('adminlte::branch-maintenance.branch_code'))->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('branch_code')]) }}
+                        {{ html()->input('text', 'branch_code', $branch->branch_code)->placeholder(__('adminlte::branch-maintenance.branch_code'))->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('branch_code')]) }}
                         <small class="text-danger">{{$errors->first('branch_code')}}</small>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         {{ html()->label(__('adminlte::branch-maintenance.branch_name'), 'name')->class(['mb-0']) }}
-                        {{ html()->input('text', 'branch_name', '')->placeholder(__('adminlte::branch-maintenance.branch_name'))->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('branch_name')]) }}
+                        {{ html()->input('text', 'branch_name', $branch->branch_name)->placeholder(__('adminlte::branch-maintenance.branch_name'))->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('branch_name')]) }}
                         <small class="text-danger">{{$errors->first('branch_name')}}</small>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         {{ html()->label(__('adminlte::branch-maintenance.areas'), 'area_id')->class(['mb-0']) }}
-                        {{ html()->select('area_id', $areas,'')->class(['form-control', 'form-control-sm', 'select2', 'is-invalid' => $errors->has('area_id')]) }}
+                        {{ html()->select('area_id', $areas, $selected_ids['area_id'])->class(['form-control', 'form-control-sm', 'select2', 'is-invalid' => $errors->has('area_id')]) }}
                         <small class="text-danger">{{$errors->first('area_id')}}</small>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         {{ html()->label(__('adminlte::branch-maintenance.channels'), 'classification_id')->class(['mb-0']) }}
-                        {{ html()->select('classification_id', $classifications,'')->class(['form-control', 'form-control-sm', 'select2', 'is-invalid' => $errors->has('classification_id')]) }}
+                        {{ html()->select('classification_id', $classifications, $selected_ids['classification_id'])->class(['form-control', 'form-control-sm', 'select2', 'is-invalid' => $errors->has('classification_id')]) }}
                         <small class="text-danger">{{$errors->first('classification_id')}}</small>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         {{ html()->label(__('adminlte::branch-maintenance.regions'), 'region_id')->class(['mb-0']) }}
-                        {{ html()->select('region_id', $regions,'')->class(['form-control', 'form-control-sm', 'select2', 'is-invalid' => $errors->has('region_id')]) }}
+                        {{ html()->select('region_id', $regions, $selected_ids['region_id'])->class(['form-control', 'form-control-sm', 'select2', 'is-invalid' => $errors->has('region_id')]) }}
                         <small class="text-danger">{{$errors->first('region_id')}}</small>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 {{ html()->label(__('adminlte::utilities.longitude'), 'longitude')->class(['mb-0']) }}
-                                {{ html()->input('text', 'longitude', '')->placeholder(__('adminlte::utilities.longitude'))->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('longitude')]) }}
+                                {{ html()->input('text', 'longitude', $branch->longitude)->placeholder(__('adminlte::utilities.longitude'))->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('longitude')]) }}
                                 <small class="text-danger">{{$errors->first('longitude')}}</small>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 {{ html()->label(__('adminlte::utilities.latitude'), 'latitude')->class(['mb-0']) }}
-                                {{ html()->input('text', 'latitude', '')->placeholder(__('adminlte::utilities.latitude'))->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('latitude')]) }}
+                                {{ html()->input('text', 'latitude', $branch->latitude)->placeholder(__('adminlte::utilities.latitude'))->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('latitude')]) }}
                                 <small class="text-danger">{{$errors->first('latitude')}}</small>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 {{ html()->label(__('adminlte::utilities.accuracy').' (m)', 'accuracy')->class(['mb-0']) }}
-                                {{ html()->input('text', 'accuracy', '')->placeholder(__('adminlte::utilities.accuracy'))->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('accuracy')]) }}
+                                {{ html()->input('text', 'accuracy', $branch->accuracy)->placeholder(__('adminlte::utilities.accuracy'))->class(['form-control', 'form-control-sm', 'is-invalid' => $errors->has('accuracy')]) }}
                                 <smaall class="text-danger">{{$errors->first('accuracy')}}</small>
                             </div>
                         </div>
@@ -135,7 +135,6 @@
 @push('js')
     <script>
         $(function() {
-            getLocation();
 
             $('#reload-location').click(function(e) {
                 e.preventDefault();

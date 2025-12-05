@@ -4,6 +4,7 @@ return [
     'branch_maintenance'        => 'Branch Maintenance',
     'branch_maintenance_list'   => 'Branch Maintenance List',
     'new_branch'                => 'New Branch',
+    'update_branch'             => 'Update Branch',
     'branch_code'               => 'Branch Code',
     'branch_name'               => 'Branch Name',
     'areas'                     => 'Areas',

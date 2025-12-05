@@ -22,7 +22,10 @@ class BranchMaintenance extends Model
         'region_id',
         'branch_code',
         'branch_name',
-        'status'
+        'status',
+        'longitude',
+        'latitude',
+        'accuracy',
     ];
 
     public function getConnectionName()

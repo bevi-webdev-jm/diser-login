@@ -95,6 +95,9 @@ class BranchMaintenanceController extends Controller
             'region_id' => decrypt($request->region_id),
             'branch_code' => $request->branch_code,
             'branch_name' => $request->branch_name,
+            'longitude' => $request->longitude,
+            'latitude' => $request->latitude,
+            'accuracy' => $request->accuracy
         ]);
         $branch_maintenance->save();
 
@@ -113,7 +116,7 @@ class BranchMaintenanceController extends Controller
     }
 
     public function edit($id) {
-        $branch = BranchMaintenance::findOrFail(encrypt($id));
+        $branch = BranchMaintenance::findOrFail(decrypt($id));
 
         $selected_ids = [
             'account_id' => NULL,
@@ -180,7 +183,33 @@ class BranchMaintenanceController extends Controller
         ]);
     }
 
-    public function update() {
+    public function update(BranchEditRequest $request, $id) {
+        $branch = BranchMaintenance::findOrFail(decrypt($id));
 
+        $changes_arr['old'] = $branch->getOriginal();
+
+        $branch->update([
+            'account_id' => decrypt($request->account_id),
+            'classification_id' => decrypt($request->classification_id),
+            'area_id' => decrypt($request->area_id),
+            'region_id' => decrypt($request->region_id),
+            'branch_code' => $request->branch_code,
+            'branch_name' => $request->branch_name,
+            'longitude' => $request->longitude,
+            'latitude' => $request->latitude,
+            'accuracy' => $request->accuracy
+        ]);
+
+        $changes_arr['changes'] = $branch->getChanges();
+
+        // logs
+        activity('updated')
+            ->performedOn($branch)
+            ->withProperties($changes_arr)
+            ->log(':causer.name has updated branch maintenance :subject.branch_code');
+
+        return back()->with([
+            'message_success' => 'Branch has been updated successfuly'
+        ]);
     }
 }

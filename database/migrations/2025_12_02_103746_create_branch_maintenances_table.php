@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('branch_code')->nullable();
             $table->string('branch_name')->nullable();
             $table->string('status')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('accuracy')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
