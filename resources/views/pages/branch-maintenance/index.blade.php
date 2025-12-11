@@ -80,7 +80,7 @@
                                                 {{__('adminlte::utilities.delete')}}
                                             </a>
                                         @endcan
-                                    </td>
+                                    </td> 
                                 </tr>
                             @endforeach
                         </tbody>
