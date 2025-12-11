@@ -111,8 +111,12 @@ class BranchMaintenanceController extends Controller
         ]);
     }
 
-    public function show() {
+    public function show($id) {
+        $branch = BranchMaintenance::findOrFail(decrypt($id));
 
+        return view('pages.branch-maintenance.show')->with([
+            'branch' => $branch
+        ]);
     }
 
     public function edit($id) {
